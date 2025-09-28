@@ -1,0 +1,121 @@
+---
+
+# 🏥 Hospital Readmission Synthetic Data Generator
+
+This project provides a **synthetic data generator** for simulating hospital admission and readmission records. It is designed to support **healthcare AI projects**, **data engineering pipelines**, and **machine learning experiments** where realistic, privacy-safe patient data is required.
+
+---
+
+## 📑 Table of Contents
+- [Features](#-features)  
+- [Configuration](#-configuration)  
+- [Data Schema](#-data-schema)  
+- [Usage](#-usage)  
+- [Output Example](#-output-example)  
+- [Customization Ideas](#-customization-ideas)  
+- [License](#-license)  
+
+---
+
+## 📌 Features
+
+- **Continuous Data Streaming**: Generates batches of patient records at configurable time intervals.  
+- **Extended Realism**: Includes demographics, clinical details, lifestyle factors, and insurance information.  
+- **Customizable Output**: Easily adjust batch size, interval, and output directory.  
+- **CSV Export**: Appends new records to a CSV file for downstream use.  
+- **Safe & Synthetic**: No real patient data is used—records are fully artificial.  
+
+---
+
+## ⚙️ Configuration
+
+The script includes a configuration section at the top:
+
+```python
+OUTPUT_DIR = r"C:\Hospital Readmission Predictor AI Agent Project\HRPA_Data"
+OUTPUT_FILE = "hospital_readmission_data.csv"
+BATCH_SIZE = 10   # number of records generated every cycle
+INTERVAL = 2      # seconds between each batch
+```
+
+- **OUTPUT_DIR** → Directory where the CSV file will be saved.  
+- **OUTPUT_FILE** → Name of the CSV file.  
+- **BATCH_SIZE** → Number of records generated per cycle.  
+- **INTERVAL** → Time (in seconds) between each batch.  
+
+---
+
+## 📊 Data Schema
+
+Each generated record contains the following fields:
+
+| Field                        | Description |
+|-------------------------------|-------------|
+| PatientID                     | Unique patient identifier (UUID-based) |
+| Age                           | Patient age (18–90) |
+| Gender                        | Male, Female, or Other |
+| AdmissionDate                 | Date of hospital admission |
+| DischargeDate                 | Date of discharge |
+| Diagnosis                     | Primary diagnosis (e.g., Heart Failure, Diabetes) |
+| LengthOfStay                  | Number of days admitted |
+| PriorAdmissions               | Count of previous admissions |
+| Medications                   | Example prescribed medication |
+| ReadmittedWithin30Days        | Target variable (0 = No, 1 = Yes) |
+| BMI                           | Body Mass Index (18.0–40.0) |
+| SmokingStatus                 | Never, Former, or Current |
+| AlcoholUse                    | None, Moderate, or Heavy |
+| BloodPressure                 | Systolic/Diastolic (e.g., 120/80) |
+| CholesterolLevel              | Cholesterol in mg/dL (150–300) |
+| HbA1c                         | Glycated hemoglobin % (4.5–12.0) |
+| FollowUpAppointmentScheduled  | 0 = No, 1 = Yes |
+| InsuranceType                 | Public, Private, or Self-Pay |
+| RecordGeneratedAt             | Timestamp of record creation |
+
+---
+
+## 🚀 Usage
+
+1. **Install dependencies**  
+   Ensure you have Python 3.8+ and install required libraries:
+
+   ```bash
+   pip install pandas
+   ```
+
+2. **Run the script**  
+
+   ```bash
+   python hospital_readmission_generator.py
+   ```
+
+3. **Stop the generator**  
+   Press `CTRL + C` to stop streaming data.
+
+---
+
+## 📂 Output Example
+
+A sample CSV row might look like:
+
+```csv
+PatientID,Age,Gender,AdmissionDate,DischargeDate,Diagnosis,LengthOfStay,PriorAdmissions,Medications,ReadmittedWithin30Days,BMI,SmokingStatus,AlcoholUse,BloodPressure,CholesterolLevel,HbA1c,FollowUpAppointmentScheduled,InsuranceType,RecordGeneratedAt
+a1b2c3d4,67,Female,2025-03-15,2025-03-20,Heart Failure,5,2,Beta Blockers,1,29.4,Former,Moderate,135/85,210,7.2,1,Public,2025-09-28 15:20:45
+```
+
+---
+
+## 🔧 Customization Ideas
+
+- Add **more diagnoses or medications** to expand realism.  
+- Introduce **geographic or hospital-specific fields**.  
+- Simulate **seasonal admission trends**.  
+- Integrate with **streaming platforms** (Kafka, Event Hubs) for real-time pipelines.  
+
+---
+
+## 📜 License
+
+This project generates **synthetic data** for research, prototyping, and educational purposes.  
+No real patient information is used. You are free to adapt and extend this script under an open-source license of your choice (e.g., MIT, Apache 2.0).  
+
+---
