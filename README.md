@@ -14,6 +14,24 @@ This repository serves as both a **comprehensive guide** and a **showcase** for 
 
 ---
 
+## 📑 Table of Contents
+- [Project Goals](#-project-goals)  
+- [Tech Stack](#-tech-stack)  
+- [Roadmap](#-roadmap)  
+- [Synthetic Data Generator](#-synthetic-data-generator)  
+  - [Features](#-features)  
+  - [Configuration](#-configuration)  
+  - [Data Schema](#-data-schema)  
+  - [Usage](#-usage)  
+  - [Output Example](#-output-example)  
+  - [Customization Ideas](#-customization-ideas)  
+- [Documentation](#-documentation)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
+- [Acknowledgements](#-acknowledgements)  
+
+---
+
 ## 🎯 Project Goals
 The primary objectives of this project are:
 
@@ -61,6 +79,96 @@ The primary objectives of this project are:
 - [ ] Deploy model to Azure ML endpoint  
 - [ ] Build AI agent in Azure AI Foundry  
 - [ ] Document full workflow with examples  
+
+---
+
+## 🧪 Synthetic Data Generator
+
+The **Hospital Readmission Synthetic Data Generator** is the foundation of this project. It produces realistic, privacy-safe patient records that fuel model training and evaluation.
+
+### 📌 Features
+- **Continuous Data Streaming**: Generates batches of patient records at configurable time intervals.  
+- **Extended Realism**: Includes demographics, clinical details, lifestyle factors, and insurance information.  
+- **Customizable Output**: Easily adjust batch size, interval, and output directory.  
+- **CSV Export**: Appends new records to a CSV file for downstream use.  
+- **Safe & Synthetic**: No real patient data is used—records are fully artificial.  
+
+---
+
+### ⚙️ Configuration
+At the top of the script, you can configure:
+
+```python
+OUTPUT_DIR = r"C:\Hospital Readmission Predictor AI Agent Project\HRPA_Data"
+OUTPUT_FILE = "hospital_readmission_data.csv"
+BATCH_SIZE = 10   # number of records generated every cycle
+INTERVAL = 2      # seconds between each batch
+```
+
+- **OUTPUT_DIR** → Directory where the CSV file will be saved  
+- **OUTPUT_FILE** → Name of the CSV file  
+- **BATCH_SIZE** → Number of records generated per cycle  
+- **INTERVAL** → Time (in seconds) between each batch  
+
+---
+
+### 📊 Data Schema
+
+| Field                        | Description |
+|-------------------------------|-------------|
+| PatientID                     | Unique patient identifier (UUID-based) |
+| Age                           | Patient age (18–90) |
+| Gender                        | Male, Female, or Other |
+| AdmissionDate                 | Date of hospital admission |
+| DischargeDate                 | Date of discharge |
+| Diagnosis                     | Primary diagnosis (e.g., Heart Failure, Diabetes) |
+| LengthOfStay                  | Number of days admitted |
+| PriorAdmissions               | Count of previous admissions |
+| Medications                   | Example prescribed medication |
+| ReadmittedWithin30Days        | Target variable (0 = No, 1 = Yes) |
+| BMI                           | Body Mass Index (18.0–40.0) |
+| SmokingStatus                 | Never, Former, or Current |
+| AlcoholUse                    | None, Moderate, or Heavy |
+| BloodPressure                 | Systolic/Diastolic (e.g., 120/80) |
+| CholesterolLevel              | Cholesterol in mg/dL (150–300) |
+| HbA1c                         | Glycated hemoglobin % (4.5–12.0) |
+| FollowUpAppointmentScheduled  | 0 = No, 1 = Yes |
+| InsuranceType                 | Public, Private, or Self-Pay |
+| RecordGeneratedAt             | Timestamp of record creation |
+
+---
+
+### 🚀 Usage
+
+1. **Install dependencies**  
+   ```bash
+   pip install pandas
+   ```
+
+2. **Run the generator**  
+   ```bash
+   python hospital_readmission_generator.py
+   ```
+
+3. **Stop the generator**  
+   Press `CTRL + C` to stop streaming data.  
+
+---
+
+### 📂 Output Example
+
+```csv
+PatientID,Age,Gender,AdmissionDate,DischargeDate,Diagnosis,LengthOfStay,PriorAdmissions,Medications,ReadmittedWithin30Days,BMI,SmokingStatus,AlcoholUse,BloodPressure,CholesterolLevel,HbA1c,FollowUpAppointmentScheduled,InsuranceType,RecordGeneratedAt
+a1b2c3d4,67,Female,2025-03-15,2025-03-20,Heart Failure,5,2,Beta Blockers,1,29.4,Former,Moderate,135/85,210,7.2,1,Public,2025-09-28 15:20:45
+```
+
+---
+
+### 🔧 Customization Ideas
+- Add **more diagnoses or medications** to expand realism  
+- Introduce **geographic or hospital-specific fields**  
+- Simulate **seasonal admission trends**  
+- Integrate with **streaming platforms** (Kafka, Event Hubs)  
 
 ---
 
