@@ -1,5 +1,16 @@
 # 🏥 Hospital Readmission Predictor AI Agent
 
+```mermaid
+flowchart LR
+    A[Synthetic Data Generator] --> B[Model Training & Evaluation]
+    B --> C[Deployment on Azure ML Endpoint]
+    C --> D[AI Agent in Azure AI Foundry]
+```
+
+*End-to-end pipeline: synthetic data powers model training, which is deployed to Azure, and finally integrated into an intelligent AI agent for clinical decision support.*
+
+---
+
 ## 📌 Project Description
 This project is a **proof-of-concept** demonstrating how to build, deploy, and manage an **AI agent** capable of predicting **30-day hospital readmissions**.  
 
@@ -189,6 +200,9 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## 📜 License
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.  
 
+## 🚧 Project Status
+This project is **still in progress**. Features, documentation, and workflows are actively being developed.  
+Please be aware of this before drawing conclusions, as the repository is public and evolving.  
 ---
 
 ## 🌟 Acknowledgements
